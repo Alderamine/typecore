@@ -1,0 +1,105 @@
+.sections {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid transparent;
+    border-radius: 0.5rem;
+
+    &__section {
+        flex: 1;
+        background-color: transparent;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    &__separator:not(&__separator:last-of-type) {
+        width: 0.05rem;
+        height: 0.75rem;
+        background-color: white;
+        border-radius: 1rem;
+    }
+}
+
+.parameters {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    gap: 3rem;
+
+    &__group {
+        display: flex;
+        align-items: center;
+    }
+
+    &__group--space &__button {
+        padding: 0 0.5rem;
+    }
+
+    &__group--presets {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0.5rem;
+
+        .parameters__group--space {
+            margin-right: auto;
+        }
+
+        span {
+            font-weight: 400;
+        }
+    }
+
+    &__add_preset {
+        background-color: transparent;  
+        border: none;
+        cursor: pointer;
+    }
+
+    &__group--icon {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    &__group--punctuation {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    span {
+        font-weight: 500;
+        font-size: 1rem;
+    }
+
+    &__button {
+        background: transparent;
+        border: none;
+        opacity: 0.4;
+        cursor: pointer;
+        transition: opacity 0.2s ease, text-decoration 0.2s ease;
+        padding: 0.25rem;
+    }
+
+    &__button.active {
+        opacity: 0.8;
+        text-decoration: underline;
+        text-underline-offset: 0.2rem;
+    }
+
+    &__button:hover {
+        opacity: 0.6;
+    }
+
+    &__ABC {
+        font-weight: 500;
+    }
+
+    svg {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+}

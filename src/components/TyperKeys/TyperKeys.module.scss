@@ -1,0 +1,15 @@
+.keys {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    &__key {
+        font-size: 0.8rem;
+        border-radius: 0.25rem;
+        padding: 1rem;
+
+        span {
+            font-weight: bold;
+        }
+    }
+}

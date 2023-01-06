@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 5rem;
+    transition: opacity 0.3s, transform 0.2s;
+
+    svg {
+        position: absolute;
+    }
+
+    svg:first-of-type {
+        transform: translateX(-1.4rem) scale(0.75);
+    }
+
+    svg:last-of-type {
+        transform: translateX(1.4rem) scale(0.75);
+    }
+
+    &.hide {
+        opacity: 0;
+        transform: translateY(-1rem);
+    }
+}
+
+.spinner {
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 0.6rem solid transparent;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: spin 0.5s linear infinite forwards;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
