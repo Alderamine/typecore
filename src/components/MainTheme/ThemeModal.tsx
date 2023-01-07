@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 import { useSelector } from "react-redux";
@@ -6,17 +6,72 @@ import { useSelector } from "react-redux";
 import styles from "./MainTheme.module.scss";
 import themes, { Theme } from "../../data/themes";
 
-function ThemeModal(props: {closed?: boolean}) {
+function ThemeModal(props: {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  closed?: boolean;
+}) {
   const theme = useSelector((state: { theme: Theme }) => state.theme);
+  const searchRef = useRef<HTMLInputElement>(null);
+  const [filteredThemes, setFilteredThemes] = useState(themes);
+
+  useEffect(() => {
+    if (searchRef.current && searchRef.current.value) {
+      console.log(searchRef.current.value);
+      setFilteredThemes(() => {
+        const newThemes = [] as Theme[];
+        for (let theme of themes) {
+          if (
+            theme.name.indexOf(
+              searchRef.current ? searchRef.current.value : ""
+            ) >= 0
+          ) {
+            newThemes.push(theme);
+          }
+
+          if (
+            theme.tags.find(
+              (t) =>
+                t.indexOf(searchRef.current ? searchRef.current.value : "") >= 0
+            )
+          ) {
+            newThemes.push(theme);
+          }
+        }
+
+        return newThemes;
+      });
+    }
+  }, [searchRef]);
+
+  function inputHandler() {
+    setFilteredThemes(() => {
+      const newThemes = [] as Theme[];
+      for (let theme of themes) {
+        let text = (theme.name + theme.tags.join(""))
+          .toLocaleLowerCase()
+          .trim();
+        if (
+          text.indexOf(searchRef.current ? searchRef.current.value : "") >= 0
+        ) {
+          newThemes.push(theme);
+        }
+      }
+
+      console.log(newThemes);
+      return newThemes;
+    });
+  }
 
   return createPortal(
     <div
-      className={`${styles.modal} ${props.closed ? styles.closed : ""}`}
+      className={`${styles.modal} ${
+        props.closed ? styles.closed : styles.opened
+      }`}
       style={{
         background: theme.colors.container,
       }}
     >
-      <button className={styles.modal__go_back}>
+      <button className={styles.modal__go_back} onClick={props.onClick}>
         <svg
           width="24"
           height="24"
@@ -69,6 +124,10 @@ function ThemeModal(props: {closed?: boolean}) {
 
           <input
             type="text"
+            placeholder="Search"
+            onInput={inputHandler}
+            onChange={inputHandler}
+            ref={searchRef}
             style={{
               borderColor: theme.colors.accentDarker,
               color: theme.colors.text,
@@ -93,7 +152,7 @@ function ThemeModal(props: {closed?: boolean}) {
       </div>
 
       <div className={styles.modal__themes}>
-        {themes.map((t) => (
+        {filteredThemes.map((t) => (
           <div className={styles.modal_theme}>
             <button
               className={styles.modal_theme__container}

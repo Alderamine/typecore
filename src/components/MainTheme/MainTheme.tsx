@@ -6,35 +6,38 @@ import styles from "./MainTheme.module.scss";
 import { Theme } from "../../data/themes";
 
 import ThemeModal from "./ThemeModal";
+import Backdrop from "../Backdrop/Backdrop";
 
 function MainTheme() {
   const [themeModalOpened, setThemeModalOpened] = useState({
     opened: false,
-    animationFinished: false,
+    animationFinished: true,
   });
 
   const theme = useSelector((state: { theme: Theme }) => state.theme);
 
   function getThemeModal() {
     if (themeModalOpened.opened) {
-      return <ThemeModal />;
+      return <ThemeModal onClick={clickHandler} />;
     }
 
-    if (themeModalOpened.opened && !themeModalOpened.animationFinished) {
+    if (!themeModalOpened.opened && !themeModalOpened.animationFinished) {
       setTimeout(() => {
         setThemeModalOpened((modalState) => {
           return { ...modalState, animationFinished: true };
         });
       }, 300);
 
-      return <ThemeModal closed={true} />;
+      return <ThemeModal closed={true} onClick={clickHandler} />;
     }
 
     return;
   }
 
   function clickHandler() {
-    setThemeModalOpened({opened: true, animationFinished: false})
+    setThemeModalOpened((modalOpened) => {
+      return { opened: !modalOpened.opened, animationFinished: false };
+    });
   }
 
   return (
@@ -70,12 +73,13 @@ function MainTheme() {
           />
         </svg>
 
-        <span style={{ color: theme.colors.accentDarker }}>
+        <span style={{ color: theme.colors.accent }}>
           Theme - {theme.name}
         </span>
       </button>
 
       {getThemeModal()}
+      {themeModalOpened.opened && <Backdrop onClose={clickHandler} />}
     </>
   );
 }

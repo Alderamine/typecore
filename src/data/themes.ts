@@ -30,6 +30,67 @@ const themes: Theme[] = [
       neutral: "#515151",
     },
   },
+  {
+    name: "Slide",
+    id: "t-2",
+    tags: ["neon", "dark"],
+
+    colors: {
+      background: "#040011",
+      container: "#080020",
+      text: "#FFFFFF",
+      accent: "#FF33DE",
+      accentDarker: "#AB0090",
+      accentDarkest: "#760063",
+      neutral: "#515151",
+    },
+  },
+  {
+    name: "Slide",
+    id: "t-3",
+    tags: ["neon", "dark"],
+
+    colors: {
+      background: "#040011",
+      container: "#080020",
+      text: "#FFFFFF",
+      accent: "#FF33DE",
+      accentDarker: "#AB0090",
+      accentDarkest: "#760063",
+      neutral: "#515151",
+    },
+  },
+  {
+    name: "Slide",
+    id: "t-3",
+    tags: ["neon", "dark"],
+
+    colors: {
+      background: "#040011",
+      container: "#080020",
+      text: "#FFFFFF",
+      accent: "#FF33DE",
+      accentDarker: "#AB0090",
+      accentDarkest: "#760063",
+      neutral: "#515151",
+    },
+  },
+
+  {
+    name: "Slide",
+    id: "t-3",
+    tags: ["neon", "dark"],
+
+    colors: {
+      background: "#040011",
+      container: "#080020",
+      text: "#FFFFFF",
+      accent: "#FF33DE",
+      accentDarker: "#AB0090",
+      accentDarkest: "#760063",
+      neutral: "#515151",
+    },
+  },
 ];
 
 export default themes;
