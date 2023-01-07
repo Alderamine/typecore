@@ -70,14 +70,14 @@ function TyperBasics() {
         >
           <path
             d="M3.33337 12.5C3.33337 12.5 4.16671 11.6667 6.66671 11.6667C9.16671 11.6667 10.8334 13.3334 13.3334 13.3334C15.8334 13.3334 16.6667 12.5 16.6667 12.5V2.50002C16.6667 2.50002 15.8334 3.33335 13.3334 3.33335C10.8334 3.33335 9.16671 1.66669 6.66671 1.66669C4.16671 1.66669 3.33337 2.50002 3.33337 2.50002V12.5Z"
-            stroke="#FF33DE"
+            stroke={accent}
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
           <path
             d="M3.33337 18.3333V12.5"
-            stroke="#FF33DE"
+            stroke={accent}
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"

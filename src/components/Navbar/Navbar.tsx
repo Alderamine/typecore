@@ -6,7 +6,7 @@ import { Theme } from "../../data/themes";
 import styles from "./Navbar.module.scss";
 
 function Navbar(props: { ready: boolean }) {
-  const { accent, text, accentDarker } = useSelector(
+  const { accent, text, container } = useSelector(
     (state: { theme: Theme }) => state.theme.colors
   );
 
@@ -15,7 +15,7 @@ function Navbar(props: { ready: boolean }) {
       <div
         className={styles.navbar}
         style={{
-          borderBottomColor: accentDarker,
+          borderBottomColor: container,
         }}
       >
         <div className={styles.navbar__logo}>
@@ -75,7 +75,7 @@ function Navbar(props: { ready: boolean }) {
                     height="24"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke={text}
+                    stroke={accent}
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -101,7 +101,7 @@ function Navbar(props: { ready: boolean }) {
                     height="24"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke={text}
+                    stroke={accent}
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -120,7 +120,7 @@ function Navbar(props: { ready: boolean }) {
                     height="24"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke={text}
+                    stroke={accent}
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"

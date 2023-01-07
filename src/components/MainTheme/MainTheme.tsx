@@ -18,7 +18,7 @@ function MainTheme() {
 
   function getThemeModal() {
     if (themeModalOpened.opened) {
-      return <ThemeModal onClick={clickHandler} />;
+      return <ThemeModal onClick={toggleModalHandler} />;
     }
 
     if (!themeModalOpened.opened && !themeModalOpened.animationFinished) {
@@ -28,13 +28,13 @@ function MainTheme() {
         });
       }, 300);
 
-      return <ThemeModal closed={true} onClick={clickHandler} />;
+      return <ThemeModal closed={true} onClick={toggleModalHandler} />;
     }
 
     return;
   }
 
-  function clickHandler() {
+  function toggleModalHandler() {
     setThemeModalOpened((modalOpened) => {
       return { opened: !modalOpened.opened, animationFinished: false };
     });
@@ -42,7 +42,7 @@ function MainTheme() {
 
   return (
     <>
-      <button className={styles.footer_theme} onClick={clickHandler}>
+      <button className={styles.footer_theme} onClick={toggleModalHandler}>
         <svg
           width="24"
           height="24"
@@ -73,13 +73,11 @@ function MainTheme() {
           />
         </svg>
 
-        <span style={{ color: theme.colors.accent }}>
-          Theme - {theme.name}
-        </span>
+        <span style={{ color: theme.colors.accent }}>Theme - {theme.name}</span>
       </button>
 
       {getThemeModal()}
-      {themeModalOpened.opened && <Backdrop onClose={clickHandler} />}
+      {themeModalOpened.opened && <Backdrop onClose={toggleModalHandler} />}
     </>
   );
 }

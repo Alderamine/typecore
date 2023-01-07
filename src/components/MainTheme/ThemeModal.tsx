@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { themeActions } from "../../store/theme-reducers";
 
 import styles from "./MainTheme.module.scss";
 import themes, { Theme } from "../../data/themes";
@@ -10,6 +11,7 @@ function ThemeModal(props: {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   closed?: boolean;
 }) {
+  const dispatch = useDispatch();
   const theme = useSelector((state: { theme: Theme }) => state.theme);
   const searchRef = useRef<HTMLInputElement>(null);
   const [filteredThemes, setFilteredThemes] = useState(themes);
@@ -60,6 +62,10 @@ function ThemeModal(props: {
       console.log(newThemes);
       return newThemes;
     });
+  }
+
+  function changeThemeHandler(id: string) {
+    dispatch(themeActions.setTheme(id));
   }
 
   return createPortal(
@@ -157,6 +163,7 @@ function ThemeModal(props: {
             <button
               className={styles.modal_theme__container}
               style={{ background: t.colors.background }}
+              onClick={changeThemeHandler.bind(null, t.id)}
             >
               <span
                 className={styles.modal_theme__name}
@@ -171,7 +178,9 @@ function ThemeModal(props: {
             </button>
             <p className={styles.modal_theme__tags}>
               {t.tags.map((tag) => (
-                <span style={{ color: theme.colors.neutral }}>#{tag} </span>
+                <span style={{ color: theme.colors.accentDarker }}>
+                  #{tag}{" "}
+                </span>
               ))}
             </p>
           </div>
