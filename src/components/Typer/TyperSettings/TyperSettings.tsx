@@ -19,7 +19,7 @@ import TyperCustom from "./TyperCustom";
 
 function Settings() {
   const dispatch = useDispatch();
-  const { text, accentDarkest, accentDarker, container } = useSelector(
+  const { text, accentDarker, container } = useSelector(
     (state: { theme: Theme }) => state.theme.colors
   );
   const typer = useSelector((state: { typer: TyperState }) => state.typer);
@@ -76,7 +76,7 @@ function Settings() {
   }
 
   function mouseOutHandler(e: React.MouseEvent<HTMLButtonElement>) {
-    e.currentTarget.style.color = accentDarkest;
+    e.currentTarget.style.color = accentDarker;
   }
 
   return (
@@ -94,14 +94,14 @@ function Settings() {
               onMouseOver={!section.isActive ? mouseOverHandler : () => {}}
               onMouseOut={!section.isActive ? mouseOutHandler : () => {}}
               style={
-                section.isActive ? { color: text } : { color: accentDarkest }
+                section.isActive ? { color: text } : { color: accentDarker }
               }
             >
               {section.name}
             </button>
             <div
               className={styles.sections__separator}
-              style={{ background: accentDarkest }}
+              style={{ background: accentDarker }}
               key={`${section.id}-separator`}
             ></div>
           </>

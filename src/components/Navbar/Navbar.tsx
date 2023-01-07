@@ -6,7 +6,7 @@ import { Theme } from "../../data/themes";
 import styles from "./Navbar.module.scss";
 
 function Navbar(props: { ready: boolean }) {
-  const { accent, text, accentDarkest } = useSelector(
+  const { accent, text, accentDarker } = useSelector(
     (state: { theme: Theme }) => state.theme.colors
   );
 
@@ -15,7 +15,7 @@ function Navbar(props: { ready: boolean }) {
       <div
         className={styles.navbar}
         style={{
-          borderBottomColor: accentDarkest,
+          borderBottomColor: accentDarker,
         }}
       >
         <div className={styles.navbar__logo}>

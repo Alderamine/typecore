@@ -11,7 +11,7 @@ import styles from "./Presets.module.scss";
 function PresetsMain(props: { onClose: Function; onChangeTab: Function }) {
   const presets = useSelector((state: { presets: Preset[] }) => state.presets);
   const dispatch = useDispatch();
-  const { accent, text, accentDarker, accentDarkest, container } = useSelector(
+  const { accent, text, accentDarker, container } = useSelector(
     (state: { theme: Theme }) => state.theme.colors
   );
   const [displaySelected, setDisplaySelected] = useState(false);
@@ -72,7 +72,7 @@ function PresetsMain(props: { onClose: Function; onChangeTab: Function }) {
               style={{
                 color: text,
                 borderColor:
-                  displaySelected && !p.selected ? accentDarkest : accent,
+                  displaySelected && !p.selected ? accentDarker : accent,
                 borderStyle: displaySelected && p.selected ? "dashed" : "solid",
               }}
               key={p.id}
@@ -123,7 +123,7 @@ function PresetsMain(props: { onClose: Function; onChangeTab: Function }) {
         >
           {displaySelected ? "Hide displayed" : "Select displayed"}
         </button>
-        <p className={styles.presets__par} style={{ color: accentDarkest }}>
+        <p className={styles.presets__par} style={{ color: accentDarker }}>
           *You can select up to 3 presets to display on the main screen
         </p>
       </div>

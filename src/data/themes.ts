@@ -9,7 +9,6 @@ export interface Theme {
     text: string;
     accent: string;
     accentDarker: string;
-    accentDarkest: string;
     neutral: string;
   };
 }
@@ -26,7 +25,6 @@ const themes: Theme[] = [
       text: "#FFFFFF",
       accent: "#FF33DE",
       accentDarker: "#AB0090",
-      accentDarkest: "#760063",
       neutral: "#515151",
     },
   },
@@ -41,7 +39,6 @@ const themes: Theme[] = [
       text: "#FFFFFF",
       accent: "#FF33DE",
       accentDarker: "#AB0090",
-      accentDarkest: "#760063",
       neutral: "#515151",
     },
   },
@@ -56,7 +53,6 @@ const themes: Theme[] = [
       text: "#FFFFFF",
       accent: "#FF33DE",
       accentDarker: "#AB0090",
-      accentDarkest: "#760063",
       neutral: "#515151",
     },
   },
@@ -71,7 +67,6 @@ const themes: Theme[] = [
       text: "#FFFFFF",
       accent: "#FF33DE",
       accentDarker: "#AB0090",
-      accentDarkest: "#760063",
       neutral: "#515151",
     },
   },
@@ -87,7 +82,6 @@ const themes: Theme[] = [
       text: "#FFFFFF",
       accent: "#FF33DE",
       accentDarker: "#AB0090",
-      accentDarkest: "#760063",
       neutral: "#515151",
     },
   },
